@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
-import 'package:recase/recase.dart';
 import 'package:svg_packer/src/generators/dart.dart';
 import 'package:svg_packer/src/packer.dart';
 
