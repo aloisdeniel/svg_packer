@@ -1,7 +1,7 @@
 name: svg_packer
-description: A sample command-line application.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: Optimized and dynamic vector graphics for Flutter.
+version: 0.1.0
+repository: https://github.com/aloisdeniel/svg_packer
 
 environment:
   sdk: ^3.4.0
