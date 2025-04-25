@@ -1,1 +1,1 @@
-dart ../bin/svg_packer.dart --name Icon ./assets_src/
+dart ../bin/svg_packer.dart --name Icon 

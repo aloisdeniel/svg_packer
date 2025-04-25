@@ -32,7 +32,7 @@ class SvgColorReader extends VectorGraphicsCodecListener {
     required int id,
     required int? shaderId,
   }) {
-    final offset = _offset + 8;
+    final offset = _offset;
     if (paintStyle == 1) {
       colors.add(StrokeColorValue(offset, color, id));
     } else {

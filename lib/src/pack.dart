@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:path/path.dart' as path;
 
+/// A color value extracted from a vector graphics file.
 sealed class ColorValue {
   const ColorValue(this.offset, this.value);
   final int value;
@@ -13,6 +14,7 @@ sealed class ColorValue {
   }
 }
 
+/// A color extracted from a stroke paint.
 class StrokeColorValue extends ColorValue {
   const StrokeColorValue(
     super.offset,
@@ -23,6 +25,7 @@ class StrokeColorValue extends ColorValue {
   final int strokeId;
 }
 
+/// A color extracted from a fill paint.
 class FillColorValue extends ColorValue {
   const FillColorValue(
     super.offset,
@@ -33,6 +36,7 @@ class FillColorValue extends ColorValue {
   final int fillId;
 }
 
+/// A color extracted from a linear gradient definition.
 class LinearGradientColorValue extends ColorValue {
   const LinearGradientColorValue(
     super.offset,
@@ -45,6 +49,7 @@ class LinearGradientColorValue extends ColorValue {
   final int stopId;
 }
 
+/// A color extracted from a radial gradient definition.
 class RadialGradientColorValue extends ColorValue {
   const RadialGradientColorValue(
     super.offset,
@@ -57,14 +62,15 @@ class RadialGradientColorValue extends ColorValue {
   final int stopId;
 }
 
+/// A color extracted from a text configuration.
 class TextDecorationColorValue extends ColorValue {
   const TextDecorationColorValue(
     super.offset,
     super.value,
-    this.strokeId,
+    this.textConfigId,
   );
 
-  final int strokeId;
+  final int textConfigId;
 }
 
 class SvgInstance {

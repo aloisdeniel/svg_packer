@@ -43,10 +43,19 @@ class SvgPacker {
         ),
       );
       data.addAll(encoded);
+
+      // Align
+      final int mod = data.length % 4;
+      if (mod != 0) {
+        data.addAll(_zeroBuffer.take(4 - mod));
+      }
     }
+
     return SvgPack(
       instances: instances,
       data: Uint8List.fromList(data),
     );
   }
+
+  static final Uint8List _zeroBuffer = Uint8List(8);
 }

@@ -1,6 +1,6 @@
 import 'package:example/src/widgets/icon.g.dart';
-import 'package:flutter/material.dart' hide Icons, Icon;
-import 'package:vector_graphics/vector_graphics_compat.dart';
+import 'package:flutter/material.dart'
+    hide Icons, Icon, IconTheme, IconThemeData;
 
 void main() {
   runApp(const MyApp());
@@ -35,10 +35,24 @@ class Home extends StatelessWidget {
       body: SingleChildScrollView(
         child: Wrap(
           children: [
-            for (final icon in Icons.values)
-              VectorGraphic(
-                loader: Icon(icon),
+            for (final color in [null, Colors.blue, Colors.red])
+              for (final icon in Icons.values)
+                Icon(
+                  icon,
+                  color: color, // Simple color filter
+                  height: 64,
+                ),
+            Icon(
+              Icons.dominos,
+              height: 64,
+              theme: IconThemeData(
+                dominos: DominosStyle(
+                  fill0: Colors.yellow,
+                  fill1: Colors.pink,
+                  fill2: Colors.purple,
+                ),
               ),
+            ),
           ],
         ),
       ),
