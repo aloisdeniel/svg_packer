@@ -10,7 +10,7 @@ Simply put all your svg files in the `assets/src` directory in your package and 
 dart pub global run svg_packer:svg_packer
 ```
 
-You should now have a `Vector` widget in `lib/src/widgets/vector.g.dart` to instantiate any of you svg files:
+You should now have a `Vector` widget in `lib/src/widgets/vector.g.dart` ([example](https://github.com/aloisdeniel/svg_packer/blob/main/example/lib/src/widgets/icon.g.dart)) to instantiate any of you svg files:
 
 ```dart
 @override
