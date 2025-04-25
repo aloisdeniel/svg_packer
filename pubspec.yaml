@@ -1,6 +1,6 @@
 name: svg_packer
 description: Optimized and dynamic vector graphics for Flutter.
-version: 0.1.0
+version: 0.1.0-pre.1
 repository: https://github.com/aloisdeniel/svg_packer
 
 environment:
