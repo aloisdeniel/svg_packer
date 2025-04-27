@@ -12,6 +12,11 @@ class PackOptions {
     required this.dartOutputPath,
     required this.dataCollectionName,
     this.packageName,
+    this.enableMaskingOptimizer = false,
+    this.enableClippingOptimizer = false,
+    this.enableOverdrawOptimizer = false,
+    this.warningsAsErrors = false,
+    this.useHalfPrecisionControlPoints = false,
   });
 
   /// The base name for the generated dart code and asset file.
@@ -31,12 +36,34 @@ class PackOptions {
 
   /// List of SVG files to be packed.
   final List<File> inputFiles;
+
+  /// Enable the masking optimizer.
+  final bool enableMaskingOptimizer;
+
+  /// Enable the clipping optimizer.
+  final bool enableClippingOptimizer;
+
+  /// Enable the overdraw optimizer.
+  final bool enableOverdrawOptimizer;
+
+  /// Whether to treat warnings as errors during compilation.
+  final bool warningsAsErrors;
+
+  /// Whether to use half-precision control points for paths.
+  final bool useHalfPrecisionControlPoints;
 }
 
 /// Pack all SVG files into a single asset and its associated Dart code.
 Future<void> pack(PackOptions options) async {
   final packer = SvgPacker();
-  final pack = await packer.pack(options.inputFiles);
+  final pack = await packer.pack(
+    options.inputFiles,
+    enableMaskingOptimizer: options.enableMaskingOptimizer,
+    enableClippingOptimizer: options.enableClippingOptimizer,
+    enableOverdrawOptimizer: options.enableOverdrawOptimizer,
+    warningsAsErrors: options.warningsAsErrors,
+    useHalfPrecisionControlPoints: options.useHalfPrecisionControlPoints,
+  );
 
   // Asset
   final assetFile = File(options.assetOutputPath);

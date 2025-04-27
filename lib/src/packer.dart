@@ -9,12 +9,18 @@ class SvgPacker {
   /// Compiles all SVG files in the given list into a single binary blob.
   Future<SvgPack> pack(
     List<File> svgFiles, {
-    bool enableMaskingOptimizer = false,
-    bool enableClippingOptimizer = false,
-    bool enableOverdrawOptimizer = false,
+    bool enableMaskingOptimizer = true,
+    bool enableClippingOptimizer = true,
+    bool enableOverdrawOptimizer = true,
     bool warningsAsErrors = false,
     bool useHalfPrecisionControlPoints = false,
   }) async {
+    if (enableMaskingOptimizer ||
+        enableClippingOptimizer ||
+        enableOverdrawOptimizer) {
+      initializeTessellatorFromFlutterCache();
+      initializePathOpsFromFlutterCache();
+    }
     final effectiveFiles =
         svgFiles.where((x) => x.path.toLowerCase().endsWith('.svg')).toList();
     final instances = <SvgInstance>[];

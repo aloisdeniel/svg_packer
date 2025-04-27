@@ -4,26 +4,26 @@ import 'package:flutter/widgets.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 abstract class Icons {
-  static const IconData beer = IconData(0, 'beer', 0, 988);
-  static const IconData mailVolumeFill =
-      IconData(1, 'mailVolumeFill', 988, 448);
-  static const IconData dominos = IconData(2, 'dominos', 1436, 843);
-  static const IconData flutter = IconData(3, 'flutter', 2280, 156);
-  static const IconData flowChart = IconData(4, 'flowChart', 2436, 592);
-  static const IconData dart = IconData(5, 'dart', 3028, 428);
-  static const IconData apple = IconData(6, 'apple', 3456, 464);
-  static const IconData magicFill = IconData(7, 'magicFill', 3920, 568);
+  static const IconData beer = IconData(0, 'beer', 0, 986);
+  static const IconData mailVolumeFill = IconData(1, 'mailVolumeFill', 988, 500);
+  static const IconData dominos = IconData(2, 'dominos', 1488, 1926);
+  static const IconData flutter = IconData(3, 'flutter', 3416, 178);
+  static const IconData flowChart = IconData(4, 'flowChart', 3596, 812);
+  static const IconData dart = IconData(5, 'dart', 4408, 480);
+  static const IconData apple = IconData(6, 'apple', 4888, 668);
+  static const IconData magicFill = IconData(7, 'magicFill', 5556, 472);
   static const List<IconData> values = [
-    beer,
-    mailVolumeFill,
-    dominos,
-    flutter,
-    flowChart,
-    dart,
-    apple,
-    magicFill,
+   beer,
+   mailVolumeFill,
+   dominos,
+   flutter,
+   flowChart,
+   dart,
+   apple,
+   magicFill,
   ];
 }
+
 
 class IconData {
   const IconData(
@@ -58,16 +58,16 @@ class IconThemeData {
     this.apple,
     this.magicFill,
   });
-  final BeerStyle? beer;
-  final MailVolumeFillStyle? mailVolumeFill;
-  final DominosStyle? dominos;
-  final FlutterStyle? flutter;
-  final FlowChartStyle? flowChart;
-  final DartStyle? dart;
-  final AppleStyle? apple;
-  final MagicFillStyle? magicFill;
+    final BeerStyle? beer;
+    final MailVolumeFillStyle? mailVolumeFill;
+    final DominosStyle? dominos;
+    final FlutterStyle? flutter;
+    final FlowChartStyle? flowChart;
+    final DartStyle? dart;
+    final AppleStyle? apple;
+    final MagicFillStyle? magicFill;
   IconStyle? getStyle(int id) {
-    return switch (id) {
+    return switch(id) {
       0 => beer,
       1 => mailVolumeFill,
       2 => dominos,
@@ -79,31 +79,31 @@ class IconThemeData {
       _ => throw Exception('Style not found'),
     };
   }
-
   @override
   int get hashCode => Object.hashAll([
-        beer,
-        mailVolumeFill,
-        dominos,
-        flutter,
-        flowChart,
-        dart,
-        apple,
-        magicFill,
-      ]);
+    beer,
+    mailVolumeFill,
+    dominos,
+    flutter,
+    flowChart,
+    dart,
+    apple,
+    magicFill,
+  ]);
   @override
   bool operator ==(Object other) {
     return other is IconThemeData &&
-        other.beer == beer &&
-        other.mailVolumeFill == mailVolumeFill &&
-        other.dominos == dominos &&
-        other.flutter == flutter &&
-        other.flowChart == flowChart &&
-        other.dart == dart &&
-        other.apple == apple &&
-        other.magicFill == magicFill;
+      other.beer == beer &&
+      other.mailVolumeFill == mailVolumeFill &&
+      other.dominos == dominos &&
+      other.flutter == flutter &&
+      other.flowChart == flowChart &&
+      other.dart == dart &&
+      other.apple == apple &&
+      other.magicFill == magicFill;
   }
 }
+
 
 abstract class IconStyle {
   const IconStyle();
@@ -207,8 +207,7 @@ class Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style =
-        theme != null ? theme!.getStyle(data.id) : IconTheme.of(context, data);
+    final style = theme != null ? theme!.getStyle(data.id) : IconTheme.of(context, data);
     return VectorGraphic(
       loader: IconLoader(data, style: style),
       height: height,
@@ -296,14 +295,15 @@ class BeerStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
 
 class MailVolumeFillStyle extends IconStyle {
   const MailVolumeFillStyle({
@@ -314,14 +314,15 @@ class MailVolumeFillStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
 
 class DominosStyle extends IconStyle {
   const DominosStyle({
@@ -336,22 +337,23 @@ class DominosStyle extends IconStyle {
       fill2: color,
     );
   }
-
-  /// Default value is 4294967295
-  final Color? fill0;
-
-  /// Default value is 4278215825
-  final Color? fill1;
-
-  /// Default value is 4293072951
-  final Color? fill2;
+    /// Default value is 4294967295
+    final Color? fill0;
+    /// Default value is 4278215825
+    final Color? fill1;
+    /// Default value is 4293072951
+    final Color? fill2;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-        if (fill1 != null) 25: fill1!,
-        if (fill2 != null) 35: fill2!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+    if(fill1 != null)
+      25: fill1!,
+    if(fill2 != null)
+      35: fill2!,
+  };
 }
+
 
 class FlutterStyle extends IconStyle {
   const FlutterStyle({
@@ -362,14 +364,15 @@ class FlutterStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
 
 class FlowChartStyle extends IconStyle {
   const FlowChartStyle({
@@ -380,14 +383,15 @@ class FlowChartStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
 
 class DartStyle extends IconStyle {
   const DartStyle({
@@ -398,14 +402,15 @@ class DartStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
 
 class AppleStyle extends IconStyle {
   const AppleStyle({
@@ -416,14 +421,15 @@ class AppleStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
 
 class MagicFillStyle extends IconStyle {
   const MagicFillStyle({
@@ -434,11 +440,12 @@ class MagicFillStyle extends IconStyle {
       fill0: color,
     );
   }
-
-  /// Default value is 4278190080
-  final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill0;
   @override
   Map<int, Color> get colors => {
-        if (fill0 != null) 15: fill0!,
-      };
+    if(fill0 != null)
+      15: fill0!,
+  };
 }
+
