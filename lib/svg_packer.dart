@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:svg_packer/src/generators/dart.dart';
+import 'package:svg_packer/src/pack.dart';
 import 'package:svg_packer/src/packer.dart';
 
 class PackOptions {
@@ -54,7 +55,7 @@ class PackOptions {
 }
 
 /// Pack all SVG files into a single asset and its associated Dart code.
-Future<void> pack(PackOptions options) async {
+Future<SvgPack> pack(PackOptions options) async {
   final packer = SvgPacker();
   final pack = await packer.pack(
     options.inputFiles,
@@ -82,4 +83,5 @@ Future<void> pack(PackOptions options) async {
   }
 
   await dartFile.writeAsString(dartOutput);
+  return pack;
 }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -21,15 +22,17 @@ class SvgPacker {
       initializeTessellatorFromFlutterCache();
       initializePathOpsFromFlutterCache();
     }
+    var inputSize = 0;
     final effectiveFiles =
         svgFiles.where((x) => x.path.toLowerCase().endsWith('.svg')).toList();
     final instances = <SvgInstance>[];
     final data = <int>[];
     for (var i = 0; i < effectiveFiles.length; i++) {
       final element = effectiveFiles[i];
-      final svg = await element.readAsString();
+      final svg = await element.readAsBytes();
+      inputSize += svg.length;
       final encoded = encodeSvg(
-        xml: svg,
+        xml: utf8.decode(svg),
         debugName: element.path,
         enableMaskingOptimizer: enableMaskingOptimizer,
         enableClippingOptimizer: enableClippingOptimizer,
@@ -59,6 +62,7 @@ class SvgPacker {
 
     return SvgPack(
       instances: instances,
+      originalSize: inputSize,
       data: Uint8List.fromList(data),
     );
   }

@@ -15,6 +15,7 @@ dependencies:
   recase: ^4.1.0
   path: ^1.9.1
   args: ^2.7.0
+  ansicolor: ^2.0.3
 
 dev_dependencies:
   lints: ^5.0.0

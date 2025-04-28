@@ -4,23 +4,31 @@ import 'package:flutter/widgets.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 abstract class Icons {
-  static const IconData beer = IconData(0, 'beer', 0, 986);
-  static const IconData mailVolumeFill = IconData(1, 'mailVolumeFill', 988, 500);
-  static const IconData dominos = IconData(2, 'dominos', 1488, 1926);
-  static const IconData flutter = IconData(3, 'flutter', 3416, 178);
-  static const IconData flowChart = IconData(4, 'flowChart', 3596, 812);
-  static const IconData dart = IconData(5, 'dart', 4408, 480);
-  static const IconData apple = IconData(6, 'apple', 4888, 668);
-  static const IconData magicFill = IconData(7, 'magicFill', 5556, 472);
+  static const IconData beer = IconData(0, 'beer', 0, 988);
+  static const IconData cloudLightning = IconData(1, 'cloudLightning', 988, 655);
+  static const IconData mailVolumeFill = IconData(2, 'mailVolumeFill', 1644, 448);
+  static const IconData dominos = IconData(3, 'dominos', 2092, 843);
+  static const IconData flutter = IconData(4, 'flutter', 2936, 156);
+  static const IconData confetti = IconData(5, 'confetti', 3092, 1219);
+  static const IconData magicFill = IconData(6, 'magicFill', 4312, 568);
+  static const IconData dart = IconData(7, 'dart', 4880, 428);
+  static const IconData sun = IconData(8, 'sun', 5308, 1374);
+  static const IconData rocket = IconData(9, 'rocket', 6684, 1243);
+  static const IconData flowChart = IconData(10, 'flowChart', 7928, 592);
+  static const IconData apple = IconData(11, 'apple', 8520, 464);
   static const List<IconData> values = [
    beer,
+   cloudLightning,
    mailVolumeFill,
    dominos,
    flutter,
-   flowChart,
-   dart,
-   apple,
+   confetti,
    magicFill,
+   dart,
+   sun,
+   rocket,
+   flowChart,
+   apple,
   ];
 }
 
@@ -50,57 +58,77 @@ class IconData {
 class IconThemeData {
   const IconThemeData({
     this.beer,
+    this.cloudLightning,
     this.mailVolumeFill,
     this.dominos,
     this.flutter,
-    this.flowChart,
-    this.dart,
-    this.apple,
+    this.confetti,
     this.magicFill,
+    this.dart,
+    this.sun,
+    this.rocket,
+    this.flowChart,
+    this.apple,
   });
     final BeerStyle? beer;
+    final CloudLightningStyle? cloudLightning;
     final MailVolumeFillStyle? mailVolumeFill;
     final DominosStyle? dominos;
     final FlutterStyle? flutter;
-    final FlowChartStyle? flowChart;
-    final DartStyle? dart;
-    final AppleStyle? apple;
+    final ConfettiStyle? confetti;
     final MagicFillStyle? magicFill;
+    final DartStyle? dart;
+    final SunStyle? sun;
+    final RocketStyle? rocket;
+    final FlowChartStyle? flowChart;
+    final AppleStyle? apple;
   IconStyle? getStyle(int id) {
     return switch(id) {
       0 => beer,
-      1 => mailVolumeFill,
-      2 => dominos,
-      3 => flutter,
-      4 => flowChart,
-      5 => dart,
-      6 => apple,
-      7 => magicFill,
+      1 => cloudLightning,
+      2 => mailVolumeFill,
+      3 => dominos,
+      4 => flutter,
+      5 => confetti,
+      6 => magicFill,
+      7 => dart,
+      8 => sun,
+      9 => rocket,
+      10 => flowChart,
+      11 => apple,
       _ => throw Exception('Style not found'),
     };
   }
   @override
   int get hashCode => Object.hashAll([
     beer,
+    cloudLightning,
     mailVolumeFill,
     dominos,
     flutter,
-    flowChart,
-    dart,
-    apple,
+    confetti,
     magicFill,
+    dart,
+    sun,
+    rocket,
+    flowChart,
+    apple,
   ]);
   @override
   bool operator ==(Object other) {
     return other is IconThemeData &&
       other.beer == beer &&
+      other.cloudLightning == cloudLightning &&
       other.mailVolumeFill == mailVolumeFill &&
       other.dominos == dominos &&
       other.flutter == flutter &&
-      other.flowChart == flowChart &&
+      other.confetti == confetti &&
+      other.magicFill == magicFill &&
       other.dart == dart &&
-      other.apple == apple &&
-      other.magicFill == magicFill;
+      other.sun == sun &&
+      other.rocket == rocket &&
+      other.flowChart == flowChart &&
+      other.apple == apple;
   }
 }
 
@@ -305,6 +333,31 @@ class BeerStyle extends IconStyle {
 }
 
 
+class CloudLightningStyle extends IconStyle {
+  const CloudLightningStyle({
+    this.fill0,
+    this.fill1,
+  });
+  factory CloudLightningStyle.color(Color color) {
+    return CloudLightningStyle(
+      fill0: color,
+      fill1: color.withValues(alpha: color.a * 0.30),
+    );
+  }
+    /// Default value is 4278190080
+    final Color? fill0;
+    /// Default value is 1275068416
+    final Color? fill1;
+  @override
+  Map<int, Color> get colors => {
+    if(fill0 != null)
+      15: fill0!,
+    if(fill1 != null)
+      25: fill1!,
+  };
+}
+
+
 class MailVolumeFillStyle extends IconStyle {
   const MailVolumeFillStyle({
     this.fill0,
@@ -374,12 +427,37 @@ class FlutterStyle extends IconStyle {
 }
 
 
-class FlowChartStyle extends IconStyle {
-  const FlowChartStyle({
+class ConfettiStyle extends IconStyle {
+  const ConfettiStyle({
+    this.fill0,
+    this.fill1,
+  });
+  factory ConfettiStyle.color(Color color) {
+    return ConfettiStyle(
+      fill0: color.withValues(alpha: color.a * 0.30),
+      fill1: color,
+    );
+  }
+    /// Default value is 1275068416
+    final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill1;
+  @override
+  Map<int, Color> get colors => {
+    if(fill0 != null)
+      15: fill0!,
+    if(fill1 != null)
+      25: fill1!,
+  };
+}
+
+
+class MagicFillStyle extends IconStyle {
+  const MagicFillStyle({
     this.fill0,
   });
-  factory FlowChartStyle.color(Color color) {
-    return FlowChartStyle(
+  factory MagicFillStyle.color(Color color) {
+    return MagicFillStyle(
       fill0: color,
     );
   }
@@ -412,12 +490,62 @@ class DartStyle extends IconStyle {
 }
 
 
-class AppleStyle extends IconStyle {
-  const AppleStyle({
+class SunStyle extends IconStyle {
+  const SunStyle({
+    this.fill0,
+    this.fill1,
+  });
+  factory SunStyle.color(Color color) {
+    return SunStyle(
+      fill0: color,
+      fill1: color.withValues(alpha: color.a * 0.30),
+    );
+  }
+    /// Default value is 4278190080
+    final Color? fill0;
+    /// Default value is 1275068416
+    final Color? fill1;
+  @override
+  Map<int, Color> get colors => {
+    if(fill0 != null)
+      15: fill0!,
+    if(fill1 != null)
+      25: fill1!,
+  };
+}
+
+
+class RocketStyle extends IconStyle {
+  const RocketStyle({
+    this.fill0,
+    this.fill1,
+  });
+  factory RocketStyle.color(Color color) {
+    return RocketStyle(
+      fill0: color.withValues(alpha: color.a * 0.30),
+      fill1: color,
+    );
+  }
+    /// Default value is 1275068416
+    final Color? fill0;
+    /// Default value is 4278190080
+    final Color? fill1;
+  @override
+  Map<int, Color> get colors => {
+    if(fill0 != null)
+      15: fill0!,
+    if(fill1 != null)
+      25: fill1!,
+  };
+}
+
+
+class FlowChartStyle extends IconStyle {
+  const FlowChartStyle({
     this.fill0,
   });
-  factory AppleStyle.color(Color color) {
-    return AppleStyle(
+  factory FlowChartStyle.color(Color color) {
+    return FlowChartStyle(
       fill0: color,
     );
   }
@@ -431,12 +559,12 @@ class AppleStyle extends IconStyle {
 }
 
 
-class MagicFillStyle extends IconStyle {
-  const MagicFillStyle({
+class AppleStyle extends IconStyle {
+  const AppleStyle({
     this.fill0,
   });
-  factory MagicFillStyle.color(Color color) {
-    return MagicFillStyle(
+  factory AppleStyle.color(Color color) {
+    return AppleStyle(
       fill0: color,
     );
   }

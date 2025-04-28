@@ -95,9 +95,11 @@ class SvgInstance {
 class SvgPack {
   const SvgPack({
     required this.instances,
+    required this.originalSize,
     required this.data,
   });
 
   final List<SvgInstance> instances;
   final Uint8List data;
+  final int originalSize;
 }
